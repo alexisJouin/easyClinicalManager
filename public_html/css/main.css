@@ -65,19 +65,14 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+html{
+    /*background: antiquewhite;*/
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
+form{
+/*    background-color: aliceblue;
+    opacity: 0.8;*/
+}
 
 
 
@@ -192,6 +187,25 @@ textarea[contenteditable] {
 }
 
 /* ==========================================================================
+   Customize elements
+   ========================================================================== */
+.inscription{
+    display: none;
+}
+
+#displayConnection{
+    display: none;
+}
+
+.linkIC{
+    position: relative;
+    float: right;
+    margin-right: 5%;
+}
+
+
+
+/* ==========================================================================
    EXAMPLE Media Queries for Responsive Design.
    Theses examples override the primary ('mobile first') styles.
    Modify as content requires.
@@ -202,6 +216,6 @@ textarea[contenteditable] {
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
-       only screen and (min-resolution: 144dpi) {
+only screen and (min-resolution: 144dpi) {
     /* Style adjustments for viewports that meet the condition */
 }
