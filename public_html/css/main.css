@@ -203,7 +203,25 @@ textarea[contenteditable] {
     margin-right: 5%;
 }
 
+#formButton{
+    text-align: center;
+}
 
+#imageBack1{
+    width:100%;
+    position: absolute;
+    opacity: 0.1;
+    top: 5%;
+}
+
+#logoKorian{
+    width: 20%;
+    margin: 0px auto auto 38.5%;
+}
+
+#erreurInsctiption{
+    background-color: firebrick;
+}
 
 /* ==========================================================================
    EXAMPLE Media Queries for Responsive Design.

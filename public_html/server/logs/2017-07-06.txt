@@ -1,0 +1,19 @@
+Time : 22:18:23
+SQLSTATE[HY000]: General error: 1364 Field 'email' doesn't have a default value
+Raw SQL : INSERT INTO user (prenom,nom,login,password) VALUES (:prenom,:nom,:login,:password)
+
+Time : 18:51:48
+SQLSTATE[HY000]: General error: 1364 Field 'password' doesn't have a default value
+Raw SQL : INSERT INTO user (nom,prenom,login) VALUES (:nom,:prenom,:login)
+
+Time : 18:49:10
+SQLSTATE[HY000]: General error: 1364 Field 'email' doesn't have a default value
+Raw SQL : INSERT INTO user (nom,prenom,login) VALUES (:nom,:prenom,:login)
+
+Time : 18:48:05
+SQLSTATE[HY000]: General error: 1364 Field 'login' doesn't have a default value
+Raw SQL : INSERT INTO user (nom,prenom) VALUES (:nom,:prenom)
+
+Time : 18:32:08
+SQLSTATE[HY000]: General error: 1364 Field 'login' doesn't have a default value
+Raw SQL : INSERT INTO user (nom,prenom) VALUES (:nom,:prenom)
