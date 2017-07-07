@@ -99,7 +99,7 @@
                     </div>
                 </form>
             </div>
-            
+
             <!-- Modal Structure Inscription confirmation -->
             <div id="confirmInsctiption" class="modal">
                 <div class="modal-content">
@@ -111,13 +111,13 @@
                     <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">OK</a>
                 </div>
             </div>
-            
+
             <!-- Modal Structure Erreur -->
             <div id="erreurInsctiption" class="modal">
                 <div class="modal-content">
                     <h4>Erreur lors de l'inscription !</h4>
                     <p>Vérifier la saisie dans le formulaire, ne pas remplir de 
-                    caractères interdit ...</p>
+                        caractères interdit ...</p>
                 </div>
                 <div class="modal-footer">
                     <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">OK</a>
@@ -137,14 +137,14 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix">account_circle</i>
-                            <input id="icon_prefix" type="text" class="validate">
+                            <input id="loginConnect" type="text" class="validate" required>
                             <label for="icon_prefix">Login</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix">vpn_key</i>
-                            <input id="password" type="password" class="validate">
+                            <input id="passwordConnect" type="password" class="validate" required>
                             <label for="password">Mot de passe</label>
                         </div>
                     </div>
@@ -154,6 +154,17 @@
                         </button>
                     </div>
                 </form>
+            </div>
+            <!-- Modal Structure Inscription confirmation -->
+            <div id="erreurConnection" class="modal">
+                <div class="modal-content">
+                    <h4>Inscription confirmée !</h4>
+                    <p>Vous pouvez maintenant vous connecter. Votre login est
+                        de la forme prenom.nom </p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">OK</a>
+                </div>
             </div>
         </div>
 
@@ -170,7 +181,7 @@
         <script src="js/vendor/jquery-3.2.1.min.js"></script>
         <script src="js/helper.js"></script>
         <script src="js/materialize.js"></script>
-        <script src="js/main.js"></script>
+        <script src="js/index.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>

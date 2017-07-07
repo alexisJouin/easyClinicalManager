@@ -1,3 +1,15 @@
+Time : 23:51:28
+SQLSTATE[42000]: Syntax error or access violation: 1064 Erreur de syntaxe près de '? LIMIT 1' à la ligne 1
+Raw SQL : SELECT * FROM user WHERE idLIKE :id LIMIT 1
+
+Time : 23:31:35
+SQLSTATE[23000]: Integrity constraint violation: 1048 Le champ 'prenom' ne peut être vide (null)
+Raw SQL : INSERT INTO user (prenom,nom,login,password,email) VALUES (:prenom,:nom,:login,:password,:email)
+
+Time : 23:31:06
+SQLSTATE[23000]: Integrity constraint violation: 1048 Le champ 'prenom' ne peut être vide (null)
+Raw SQL : INSERT INTO user (prenom,nom,login,password,email) VALUES (:prenom,:nom,:login,:password,:email)
+
 Time : 22:18:23
 SQLSTATE[HY000]: General error: 1364 Field 'email' doesn't have a default value
 Raw SQL : INSERT INTO user (prenom,nom,login,password) VALUES (:prenom,:nom,:login,:password)
