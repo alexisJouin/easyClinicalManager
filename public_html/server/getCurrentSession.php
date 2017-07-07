@@ -16,7 +16,7 @@ $_SESSION['login'] = $user->login;
 $_SESSION['privilege'] = $user->privilege;
 
 $id = $_SESSION['id'];
-$login = $_SESSION['id_groupe'];
+$login = $_SESSION['login'];
 $privilege = $_SESSION['privilege'];
 
 
@@ -26,4 +26,20 @@ $tabSession = array(
     "privilege" => $privilege
 );
 
-echo json_encode($tabSession);
+
+if (ifsessionExists($id, $login, $privilege)) {
+    echo json_encode($tabSession);
+} else {
+    echo -1;
+}
+
+function ifsessionExists($id, $login, $privilege) {
+    // check if session exists?
+    if (isset($_SESSION)) {
+        if (!empty($id) || !empty($login) || !empty($privilege)) {
+            return true;
+        }
+    } else {
+        return false;
+    }
+}

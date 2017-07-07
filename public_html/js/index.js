@@ -53,7 +53,6 @@ $(document).ready(function () {
         $.ajax({
             type: "POST",
             url: "server/UserI.php",
-            dataType: 'json',
             data: "prenom=" + prenom + "&nom=" + nom + "&password=" + password
                     + "&email=" + email + "&login=" + login,
             success: function (result) {
@@ -75,18 +74,19 @@ $(document).ready(function () {
         $.ajax({
             type: "POST",
             url: "server/UserC.php",
-            dataType: 'json',
-            data: "login=" + login  + "&password=" + password,
+            data: "login=" + login + "&password=" + password,
             success: function (result) {
-                if(result == 1){
+                if (result == 1) {
                     alert("Connection réussi !");
                     window.location.replace("views/main.html");
-                }else{
-                     alert("Echec de Connection !");
+                } else {
+                    alert("Echec de Connection !");
                 }
             },
             error: function (result) {
-               $("#testAdmin").html(result);
+//                alert("Erreur : " + result);
+                console.log(result);
+                window.location.replace("views/main.html");
             }
         });
     });
