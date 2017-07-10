@@ -22,6 +22,8 @@ $(document).ready(function () {
         $('#etage1').hide(200);
         $('#etage2').hide(200);
         $('#backToSelectEtage').hide(200);
+        $('#infoChambre').hide(200);
+        
     });
     function getSession() {
         $.ajax({
@@ -68,6 +70,14 @@ $(document).ready(function () {
             var chambres = JSON.parse(result);
             for (var i in chambres) {
                 $('#listeChambre').append("<li>" + chambres[i].numero + " => Etage " + chambres[i].etage + "</li>");
+
+
+                //Pour la partie Agent
+                if (chambres[i].etage == 1) {
+                    $('#etage1').children("ul").append("<li id='" + chambres[i].numero + "'>" + chambres[i].numero + "</li>");
+                } else if (chambres[i].etage == 2) {
+                    $('#etage2').children("ul").append("<li id='" + chambres[i].numero + "'>" + chambres[i].numero + "</li>");
+                }
             }
 
         },
@@ -258,7 +268,7 @@ $(document).ready(function () {
             success: function (result) {
                 $("#nomPatientGet").append($('#nomPatient').val());
                 $('#confirmAddPatient').modal("open");
-                $('#listPatient').children('ul').append("<li class='listPatient'>" + $('#nomPatient').val() + 
+                $('#listPatient').children('ul').append("<li class='listPatient'>" + $('#nomPatient').val() +
                         " Chambre n° " + $("#selectChambrePatient option:selected").text() + "</li>");
                 $('input').val("");
                 $('#displayListPatient').click();
@@ -303,6 +313,35 @@ $(document).ready(function () {
             $('#selectChambreExport').fadeOut(200);
         }
     });
+
+
+
+
+    // *************** VUE AGENT **********************//
+    $("#vueAgent").click(function () {
+        $("#vueAgent").fadeOut(300);
+        $("#divAdmin").fadeOut(300);
+        $("#divAgent").fadeIn(300);
+
+    });
+
+    //AFTER PAGE LOADED
+    $(window).on('load', function () {
+        
+        $('.etage').children().children('li').click(function () {
+            var idChambre = $(this).attr('id');
+            $(".etage").fadeOut(200);
+            $("#infoChambre").fadeIn(300);
+            $('#idChambre').append(idChambre);
+        });
+
+    });
+
+
+
+
+
+
 
     //LOGOFF
     $('#logOff').click(function () {

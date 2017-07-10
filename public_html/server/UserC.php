@@ -2,7 +2,7 @@
 require("class/User.php");
 
 
-if (isset($_POST['login']) && isset($_POST['password'])) {
+if (!empty($_POST['login']) && !empty($_POST['password'])) {
     //Récupération des données clients
     $loginPost = $_POST['login'];
     $password = $_POST['password'];
@@ -19,10 +19,10 @@ if (isset($_POST['login']) && isset($_POST['password'])) {
                 //Démarage de la session
 //                session_destroy();
                 session_start();
-                $_COOKIE['login'] = $user->login;
                 $_SESSION['id'] = $user->id;
                 $_SESSION['login'] = $user->login;
                 $_SESSION['privilege'] = $user->privilege;
+                $_COOKIE['login'] = $user->login;
                 ?>
                 <script>
                 //                    alert("Super Co Réussi")
@@ -42,6 +42,6 @@ if (isset($_POST['login']) && isset($_POST['password'])) {
 ?>
 <script>
 //    alert("Super Co Réussi")
-    window.location.replace("../views/main.html");
+   // window.location.replace("../views/main.html");
 </script>
 

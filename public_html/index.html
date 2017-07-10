@@ -131,9 +131,9 @@
         *****************************// CONNECTION //**************************
         ***********************************************************************
         -->
-        <div class='connection'>
+        <div id='connection'>
             <div class="row">
-                <form class="col s12" action="server/UserC.php" method="GET">
+                <form class="col s12">
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix">account_circle</i>
@@ -149,7 +149,7 @@
                         </div>
                     </div>
                     <div class="row" id="formButton">
-                        <button class="btn waves-effect waves-light blue" type="submit">Se connecter
+                        <button class="btn waves-effect waves-light blue" action='#' type="submit">Se connecter
                             <i class="material-icons right">send</i>
                         </button>
                     </div>
@@ -171,6 +171,10 @@
         <div class="linkIC">
             <a href="#inscription" id='displayInscription'>S'inscrire</a>
             <a href="#connection" id='displayConnection'>Se connecter</a>
+            <br>
+            <a href="views/main.html" id=''>Access to main admin test</a>
+            
+            
         </div>
 
 

@@ -19,7 +19,8 @@ $(document).ready(function () {
 
 
     //Connection
-    $(".connection").children().children('form').submit(function () {
+    $("#connection").children().children('form').submit(function () {
+        alert("Demande de connection");
         var login = $("#loginConnect").val();
         var password = $("#passwordConnect").val();
 
@@ -45,9 +46,8 @@ $(document).ready(function () {
             type: "POST",
             url: "server/UserC.php",
             data: "login=" + login + "&password=" + password,
-            dataType: "text",
             success: function (result) {
-                if (data == 'Success') {
+                if (result == 'Success') {
 //                    alert("Connection réussi !");
                     window.location.replace("views/main.html");
                 } else {
