@@ -21,7 +21,7 @@
         <h2>ECM - Main page</h2>
         <h5>Login : <span class="login"></span></h5>
 
-        
+
         <!--******************************************************************//
         //************************ PARTIE Agent ******************************//
         //*******************************************************************-->
@@ -51,34 +51,188 @@
         //************************ PARTIE ADMIN ******************************//
         //*******************************************************************-->
         <div id='divAdmin'>
-            <nav class="nav-extended">
+            <nav class="nav-extended blue">
                 <div class="nav-wrapper">
                     <a href="#" class="brand-logo">Partie Administrateur</a>
-                    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-                    <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        <li><a href="sass.html">Sass</a></li>
-                        <li><a href="badges.html">Components</a></li>
-                        <li><a href="collapsible.html">JavaScript</a></li>
-                    </ul>
-                    <ul class="side-nav" id="mobile-demo">
-                        <li><a href="sass.html">Sass</a></li>
-                        <li><a href="badges.html">Components</a></li>
-                        <li><a href="collapsible.html">JavaScript</a></li>
-                    </ul>
                 </div>
                 <div class="nav-content">
                     <ul class="tabs tabs-transparent">
-                        <li class="tab"><a href="#test1">Test 1</a></li>
-                        <li class="tab"><a class="active" href="#test2">Test 2</a></li>
-                        <li class="tab disabled"><a href="#test3">Disabled Tab</a></li>
-                        <li class="tab"><a href="#test4">Test 4</a></li>
+                        <li class="tab"><a href="#chambres">Les chambres</a></li>
+                        <li class="tab"><a href="#prestations">Les préstations</a></li>
+                        <li class="tab"><a href="#patients">Les patients</a></li>
+                        <li class="tab"><a href="#agents">Les agents</a></li>
+                        <li class="tab"><a class="active" href="#export">Exporter</a></li>
                     </ul>
                 </div>
             </nav>
-            <div id="test1" class="col s12">Test 1</div>
-            <div id="test2" class="col s12">Test 2</div>
-            <div id="test3" class="col s12">Test 3</div>
-            <div id="test4" class="col s12">Test 4</div>
+
+            <!-- *****  CHAMBRES ****** -->
+            <div id="chambres" class="col s12">
+                <ul id='listeChambre'></ul>
+                <div class="addChambre" >
+                    <div class="row">
+                        <form class="col s12">
+                            <div class="row">
+                                <div class="input-field col s5">
+                                    <input id="numChambre" type="text" class="validate" required>
+                                    <label for="numChambre">Numéro de chambre</label>
+                                </div>
+                                <div class="input-field col s3">
+                                    <input id="etage" type="number" min=1 max=5 class="validate" required>
+                                    <label for="etage">N° de l'étage</label>
+                                </div>
+                            </div>
+                            <button class="btn-floating btn-large waves-effect waves-light blue right" type='submit' name="action">
+                                <i class="material-icons">add</i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div id="prestations" class="col s12">
+                <nav class="nav-extended blue">
+                    <div class="nav-content">
+                        <ul class="tabs tabs-transparent">
+                            <li class="tab"><a href="#CPO">CPO</a></li>
+                            <li class="tab"><a href="#CP1">CP1</a></li>
+                            <li class="tab"><a href="#CP2">CP2</a></li>
+                            <li class="tab"><a href="#CP3">CP3</a></li>
+                            <li class="tab"><a href="#CP4">CP4</a></li>
+                            <li class="tab"><a href="#CP5">CP5</a></li>
+                        </ul>
+                    </div>
+                </nav>
+                <div id="CP0" class="col s12">
+                    <p>Aucune Préstation</p>
+                    <a href="#" class='displayAddPresentation'>Ajouter préstation ?</a>
+                    <div class="row addPrestation">
+                        <form class="col s12">
+                            <div class="row">
+                                <div class="input-field col s5">
+                                    <input id="nomPresta" type="text" class="validate" required>
+                                    <label for="nomPresta">Préstation</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <i class="material-icons prefix">mode_edit</i>
+                                    <textarea id="descriptifPresta" class="materialize-textarea"></textarea>
+                                    <label for="descriptifPresta">Déscriptif</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <a href="#" class='displayPeriodicite'>Préstation périodique ?</a>
+                                <div class='periodiciteForm'>
+                                    <div class="input-field col s12" id="selectDate">
+                                        <select multiple>
+                                            <option value="" disabled selected>Choisir les jours à répéter</option>
+                                            <option value="1">Lundi</option>
+                                            <option value="2">Mardi</option>
+                                            <option value="3">Mercredi</option>
+                                            <option value="3">Jeudi</option>
+                                            <option value="3">Vendredi</option>
+                                            <option value="3">Samedi</option>
+                                            <option value="3">Dimanche</option>
+                                        </select>
+                                        <label>Choisir une ou plusieurs dates</label>
+                                    </div>
+                                    <div class="input-field col s2">
+                                        <label for="heurePeriod">Heure</label>
+                                        <input id="heurePeriod" type="text" class="timepicker picker__input picker__input--active" tabindex="-1">
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn-floating btn-large waves-effect waves-light blue right" type='submit' name="action">
+                                <i class="material-icons">add</i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div id="CP1" class="col s12 divPresta"></div>
+                <div id="CP2" class="col s12 divPresta"></div>
+                <div id="CP3" class="col s12 divPresta"></div>
+                <div id="CP4" class="col s12 divPresta"></div>
+                <div id="CP5" class="col s12 divPresta"></div>
+
+                <!-- Modal Structure Inscription confirmation -->
+                <div id="infoPresta" class="modal">
+                    <div class="modal-content">
+                        <h4>Information Préstation <span id='nomPrestaGET' ></span></h4>
+                        <p id='descriptifPrestaGET'></p>
+                        <div class="input-field col s12" id="selectDateToChange">
+                            <select multiple>
+                                <option value="" disabled selected>Choisir les jours à répéter</option>
+                                <option value="1">Lundi</option>
+                                <option value="2">Mardi</option>
+                                <option value="3">Mercredi</option>
+                                <option value="3">Jeudi</option>
+                                <option value="3">Vendredi</option>
+                                <option value="3">Samedi</option>
+                                <option value="3">Dimanche</option>
+                            </select>
+                            <label>Choisir une ou plusieurs dates</label>
+                        </div>
+                        <div class="input-field col s2">
+                            <label for="heurePeriodToChange">Heure</label>
+                            <input id="heurePeriodToChange" type="text" class="timepicker picker__input picker__input--active" tabindex="-1">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">OK</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id='patients'>
+
+            </div>
+
+            <div id='agents'>
+                <h4>Liste des agents</h4>
+                <ul>
+                    <li><p>Florian De Azevedo</p></li>
+                    <li><p>François Dupont</p></li>
+                    <li><p>Pierre Durant</p></li>
+                    <li><p>...</p></li>
+                </ul>
+            </div>
+
+            <div id='export'>
+                <form action="#">
+                    <div class="input-field col s2">
+                        <label for="dateDebutExport">Date de début de l'exportation</label>
+                        <input type="date" class="datepicker" id='dateDebutExport'/>
+                    </div>
+                    <div class="input-field col s2">
+                        <label for="dateFinExport">Date de fin de l'exportation</label>
+                        <input type="date" class="datepicker" id='dateFinExport'/>
+                    </div>
+
+                    <p>
+                        <input name="group1" type="radio" id="chambreRadio" />
+                        <label for="chambreRadio">Chambres spécifiques</label>
+                    </p>
+                    <p>
+                        <input name="group1" type="radio" id="allChambreRadio" />
+                        <label for="allChambreRadio">Toutes les chambres</label>
+                    </p>
+                    <div class="input-field col s12" id="selectDate">
+                        <select multiple>
+                            <option value="" disabled selected>Choisir chambre(s)</option>
+                            <option value="1">CP10</option>
+                            <option value="2">CP11</option>
+                            <option value="3">CP12</option>
+                            <option value="3">CP21</option>
+                            <option value="3">CP22</option>
+                            <option value="3">CP23</option>
+                            <option value="3">CP24</option>
+                        </select>
+                        <label>Choisir une ou plusieurs chambres</label>
+                    </div>
+
+                </form>
+            </div>
+
         </div>
 
 
@@ -90,15 +244,15 @@
        //*******************************************************************-->
 
         <!-- Modal Trigger -->
-        <a class="waves-effect waves-light btn" href="#footer" id='BTfooter'>Menu</a>
+        <a class="waves-effect waves-light btn blue" href="#footer" id='BTfooter'>Menu</a>
 
         <!-- Modal Structure -->
         <div id="footer" class="modal bottom-sheet">
             <div class="modal-content">
                 <h4>Menu</h4>
                 <h5 class="white-text"><span style='color: black' class="login"></span></h5>
-                <a class="waves-effect waves-light btn"><i class="material-icons right">edit</i>Profil</a>
-                <a class="waves-effect waves-light btn" id='logOff'><i class="material-icons right">cancel</i>Se déconnecter</a>
+                <a class="waves-effect waves-light btn blue"><i class="material-icons right">edit</i>Profil</a>
+                <a class="waves-effect waves-light btn blue" id='logOff'><i class="material-icons right">cancel</i>Se déconnecter</a>
             </div>
             <div class="modal-footer">
                 <div class="footer-copyright">

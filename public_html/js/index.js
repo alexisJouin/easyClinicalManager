@@ -17,6 +17,59 @@ $(document).ready(function () {
     });
 
 
+
+    //Connection
+    $(".connection").children().children('form').submit(function () {
+        var login = $("#loginConnect").val();
+        var password = $("#passwordConnect").val();
+
+//        myXhr = $.post(
+//                'server/UserC.php',
+//                {
+//                    login: login,
+//                    password: password
+//                },
+//                function (data) {
+//                    if (data == 'Success') {
+//                        alert("Connection réussi !");
+//                        window.location.replace("views/main.html");
+//                    } else {
+//                        alert("Echec de Connection !");
+//                    }
+//                },
+//                'text'
+//
+//                );
+//
+        $.ajax({
+            type: "POST",
+            url: "server/UserC.php",
+            data: "login=" + login + "&password=" + password,
+            dataType: "text",
+            success: function (result) {
+                if (data == 'Success') {
+//                    alert("Connection réussi !");
+                    window.location.replace("views/main.html");
+                } else {
+//                    alert("Echec de Connection !");
+                }
+            },
+            error: function (result, statut, erreur) {
+//                alert("Erreur Connection : " + result);
+                console.log(statut);
+                console.log(erreur);
+//                window.location.replace("views/main.html");
+            },
+            complete: function (result, statut) {
+                console.log(result);
+//                alert("Connection " + statut);
+                window.location.replace("views/main.html");
+            }
+        });
+        window.location.replace("views/main.html");
+    });
+
+
     var prenomInput = "";
     var nomInput = "";
     var loginInput = "";
@@ -63,30 +116,6 @@ $(document).ready(function () {
             },
             error: function (result) {
                 $("#erreurInsctiption").modal("open");
-            }
-        });
-    });
-
-    //Connection
-    $(".connection").children().children('form').submit(function () {
-        var login = $("#loginConnect").val();
-        var password = $("#passwordConnect").val();
-        $.ajax({
-            type: "POST",
-            url: "server/UserC.php",
-            data: "login=" + login + "&password=" + password,
-            success: function (result) {
-                if (result == 1) {
-                    alert("Connection réussi !");
-                    window.location.replace("views/main.html");
-                } else {
-                    alert("Echec de Connection !");
-                }
-            },
-            error: function (result) {
-//                alert("Erreur : " + result);
-                console.log(result);
-                window.location.replace("views/main.html");
             }
         });
     });

@@ -263,6 +263,33 @@ a#BTetage1, a#BTetage2{
     display: none;
 }
 
+.addPrestation{
+    display: none;
+}
+
+#infoPresta{
+    height: 100%;
+}
+#infoPresta .picker__frame{
+    width: 90%;
+}
+#infoPresta .modal{
+    width: 90%;
+}
+
+.periodiciteForm{
+    display: none;
+}
+.listPresta{
+    cursor: pointer;
+    text-decoration: underline;
+    color: blue;
+}
+
+#nomPrestaGET{
+    font-weight: bold;
+}
+
 /* ==========================================================================
    EXAMPLE Media Queries for Responsive Design.
    Theses examples override the primary ('mobile first') styles.
