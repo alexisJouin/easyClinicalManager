@@ -277,6 +277,10 @@ a#BTetage1, a#BTetage2{
     width: 90%;
 }
 
+#selectChambreExport{
+    display: none;
+}
+
 .periodiciteForm{
     display: none;
 }
@@ -286,9 +290,14 @@ a#BTetage1, a#BTetage2{
     color: blue;
 }
 
-#nomPrestaGET{
+#nomPrestaGET, #nomPatientGet{
     font-weight: bold;
 }
+
+#addPatient, #displayListPatient{
+    display : none;
+}
+
 
 /* ==========================================================================
    EXAMPLE Media Queries for Responsive Design.

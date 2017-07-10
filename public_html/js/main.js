@@ -178,10 +178,8 @@ $(document).ready(function () {
         });
     });
 
-
     $("#nomPrestaGET").append("Linge");
     $("#descriptifPrestaGET").append("Un Lavage + séchage du linge par semaine");
-
 
     $('.displayAddPresentation').click(function () {
         $('.addPrestation').show(500);
@@ -193,10 +191,117 @@ $(document).ready(function () {
     });
 
 
+    //****************** PATIENT *************************//
+    $('#displayAddPatient').click(function () {
+        $('#displayAddPatient').fadeOut(200);
+        $('#displayListPatient').fadeIn(200);
+        $('#listPatient').fadeOut(200);
+        $('#addPatient').fadeIn(300);
+    });
+    $('#displayListPatient').click(function () {
+        $('#displayListPatient').fadeOut(200);
+        $('#displayAddPatient').fadeIn(200);
+        $('#listPatient').fadeIn(200);
+        $('#addPatient').fadeOut(300);
+    });
+
+    //display list patients
+    $.ajax({
+        type: "POST",
+        data: "option=1",
+        url: "../server/patientI.php",
+        success: function (result) {
+            console.log(result);
+            var patients = JSON.parse(result);
+            console.log(patients);
+            for (var i in patients) {
+                $('#listPatient').children('ul').append("<li class='listPatient'>" + patients[i].nom + " Chambre n° " + patients[i].chambre + "</li>");
+
+//                    $("#descriptifPrestaGET").append(prestations[i].descriptif);
+
+            }
+        },
+        error: function (result) {
+            alert("Erreur lors de la récup des patients");
+            console.log(result);
+        }
+    });
+
+    //add patient
+    $('.datetimepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 20, // Creates a dropdown of 15 years to control year
+        labelMonthNext: 'Mois suivant',
+        labelMonthPrev: 'Mois précédent',
+        labelMonthSelect: 'Selectionner le mois',
+        labelYearSelect: 'Selectionner une année',
+        monthsFull: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+        monthsShort: ['Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aou', 'Sep', 'Oct', 'Nov', 'Dec'],
+        weekdaysFull: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+        weekdaysShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+        weekdaysLetter: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+        today: 'Aujourd\'hui',
+        clear: 'Réinitialiser',
+        close: 'Fermer',
+        format: 'yyyy-mm-dd'
+    });
+
+    $('#addPatient').children().children("form").submit(function () {
+        $.ajax({
+            type: "POST",
+            data: "option=2&nom=" + $('#nomPatient').val() +
+                    "&prenom=" + $("#prenomPatient").val() +
+                    "&prestation=" + $("#selectPrestaPatient option:selected").text() +
+                    "&chambre=" + $("#selectChambrePatient option:selected").text() +
+                    "&date_entree=" + $("#dateEntreePatient").val(),
+            url: "../server/patientI.php",
+            success: function (result) {
+                $("#nomPatientGet").append($('#nomPatient').val());
+                $('#confirmAddPatient').modal("open");
+                $('#listPatient').children('ul').append("<li class='listPatient'>" + $('#nomPatient').val() + 
+                        " Chambre n° " + $("#selectChambrePatient option:selected").text() + "</li>");
+                $('input').val("");
+                $('#displayListPatient').click();
+            },
+            error: function (result) {
+                alert("Erreur lors de l'ajout du patient");
+                console.log(result);
+            }
+        });
+    });
+
+
+
+
+
+
+
+
     //Export
     $('.datepicker').pickadate({
         selectMonths: true, // Creates a dropdown to control month
-        selectYears: 20 // Creates a dropdown of 15 years to control year
+        selectYears: 20, // Creates a dropdown of 15 years to control year
+        labelMonthNext: 'Mois suivant',
+        labelMonthPrev: 'Mois précédent',
+        labelMonthSelect: 'Selectionner le mois',
+        labelYearSelect: 'Selectionner une année',
+        monthsFull: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+        monthsShort: ['Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aou', 'Sep', 'Oct', 'Nov', 'Dec'],
+        weekdaysFull: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+        weekdaysShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+        weekdaysLetter: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+        today: 'Aujourd\'hui',
+        clear: 'Réinitialiser',
+        close: 'Fermer',
+        format: 'dd/mm/yyyy'
+    });
+    $('#optionExport').children().children('input').click(function () {
+        var choice = $(this).attr("id");
+        if (choice === 'chambreRadio') {
+            $('#selectChambreExport').fadeIn(200);
+        } else {
+            $('#selectChambreExport').fadeOut(200);
+        }
     });
 
     //LOGOFF
